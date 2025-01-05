@@ -10,6 +10,8 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
   output: "export",
+  reactStrictMode: true,
+  basePath: "/"
 };
 
 export default nextConfig;
