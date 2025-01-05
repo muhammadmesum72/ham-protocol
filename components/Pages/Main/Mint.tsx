@@ -26,8 +26,8 @@ const Mint = () => {
           <h1 className="text-2xl sm:text-3xl font-bold mb-4">MINT OUR NFTS</h1>
           <p className="text-sm sm:text-base md:text-lg text-[#202020]/80">
             Each entry is complemented with a personalized badge or rank,
-            motivating others with the tagline: "Your name could be here. Start
-            staking now!"
+            motivating others with the tagline: &quot;Your name could be here. Start
+            staking now!&quot;
           </p>
         </div>
 

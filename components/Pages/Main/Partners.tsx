@@ -14,13 +14,13 @@ import t12 from "@/public/main/partners/dexview.webp";
 import t13 from "@/public/main/partners/alchemy.jpeg";
 import t14 from "@/public/main/partners/moralis.webp";
 import t15 from "@/public/main/partners/trustwallet.webp";
-import bg from "@/public/main/bgPartners.png";
+
 
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
-import { useRef } from "react";
+
 
 const Partners = () => {
   const partners = [
@@ -43,7 +43,7 @@ const Partners = () => {
           <div className="mb-10 w-full mx-auto overflow-hidden">
             <Swiper
               modules={[Autoplay]}
-              slidesPerView="3"
+              slidesPerView={3}
               spaceBetween={20}
               freeMode={true}
               speed={3500}

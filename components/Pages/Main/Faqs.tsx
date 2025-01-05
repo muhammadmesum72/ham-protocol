@@ -3,45 +3,58 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown2 } from "iconsax-react";
 
-const Faqs = () => {
-  const [openIndex, setOpenIndex] = useState([2, 3]); // 3rd and 4th FAQs are open by default (indices 2 and 3)
+interface FAQ {
+  question: string;
+  answer: string;
+}
 
-  const faqs = [
+const Faqs: React.FC = () => {
+  const [openIndex, setOpenIndex] = useState<number[]>([2, 3]); // 3rd and 4th FAQs are open by default (indices 2 and 3)
+
+  const faqs: FAQ[] = [
     {
       question: "What is staking?",
-      answer: "Staking is the process of locking your cryptocurrency or NFTs in a platform to earn rewards over time. It’s an easy way to grow your assets passively."
+      answer:
+        "Staking is the process of locking your cryptocurrency or NFTs in a platform to earn rewards over time. It’s an easy way to grow your assets passively."
     },
     {
       question: "How much can I earn by staking?",
-      answer: "Your earnings depend on the staking lock duration. The longer you lock your funds, the higher the earning, with a maximum earning for extended lock durations."
+      answer:
+        "Your earnings depend on the staking lock duration. The longer you lock your funds, the higher the earning, with a maximum earning for extended lock durations."
     },
     {
       question: "Are my funds safe?",
-      answer: "Yes, your funds are completely safe. Our platform is secured with Binance Smart Blockchain technology and robust security protocols."
+      answer:
+        "Yes, your funds are completely safe. Our platform is secured with Binance Smart Blockchain technology and robust security protocols."
     },
     {
       question: "How much can I withdraw?",
-      answer: "You can withdraw your monthly income at any time and the full staked amount once the lock duration is complete."
+      answer:
+        "You can withdraw your monthly income at any time and the full staked amount once the lock duration is complete."
     },
     {
       question: "How can I stake NFTs?",
-      answer: "Simply buy your desired NFT and stake it on the platform. The process is straightforward and designed to be user-friendly."
+      answer:
+        "Simply buy your desired NFT and stake it on the platform. The process is straightforward and designed to be user-friendly."
     },
     {
       question: "Is there any real value to NFTs?",
-      answer: "Yes, our NFTs have real value. NFTs will be used in games to enhance characters in play-to-earn scenarios, adding both utility and earning potential."
+      answer:
+        "Yes, our NFTs have real value. NFTs will be used in games to enhance characters in play-to-earn scenarios, adding both utility and earning potential."
     },
     {
       question: "Is there any referral bonus available?",
-      answer: "Absolutely! You can refer friends and family to our platform and earn up to a 30% reward as a bonus."
+      answer:
+        "Absolutely! You can refer friends and family to our platform and earn up to a 30% reward as a bonus."
     },
     {
       question: "How long will this project be in development?",
-      answer: "This is a long-term project. Currently, Hamcoin, BNB, USDT staking, and NFTs are live. Upcoming features include Hampay, Ham gaming (play-to-earn), Ham slots, and the Ham metaverse. You can join us with peace of mind and watch the project grow."
+      answer:
+        "This is a long-term project. Currently, Hamcoin, BNB, USDT staking, and NFTs are live. Upcoming features include Hampay, Ham gaming (play-to-earn), Ham slots, and the Ham metaverse. You can join us with peace of mind and watch the project grow."
     }
   ];
 
-  const toggleFAQ = (index) => {
+  const toggleFAQ = (index: number) => {
     setOpenIndex((prevOpenIndex) =>
       prevOpenIndex.includes(index)
         ? prevOpenIndex.filter((i) => i !== index) // Close the FAQ if it's open
@@ -54,7 +67,7 @@ const Faqs = () => {
       <div className="px-6 md:px-[100px] py-[100px] max-w-[1440px] mx-auto">
         <div className="text-center mb-[80px] max-w-3xl mx-auto">
           <div className="text-4xl text-center">
-            Got Questions? We've Got Answers.
+            Got Questions? We&apos;ve Got Answers.
           </div>
         </div>
         <div>
@@ -96,7 +109,7 @@ const Faqs = () => {
                     height: openIndex.includes(index) ? "auto" : 0
                   }}
                   transition={{ duration: 0.3 }}
-                  className="mt-2 text-[#202020]/80  text-sm lg:text-xl overflow-hidden"
+                  className="mt-2 text-[#202020]/80 text-sm lg:text-xl overflow-hidden"
                 >
                   {openIndex.includes(index) && faq.answer}
                 </motion.div>

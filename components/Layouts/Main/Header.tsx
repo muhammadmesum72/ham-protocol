@@ -1,11 +1,10 @@
 "use client";
-import { useState, useEffect, useRef, MouseEvent } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MenuIcon, X } from "lucide-react";
 import Link from "next/link";
 import ConnectWallet from "@/components/Shared/ConnectWallet";
 import Logo from "@/components/Shared/Logo";
-import Button from "@/components/Shared/Button";
 
 const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
@@ -14,7 +13,7 @@ const Header: React.FC = () => {
   const dropdownRef = useRef<HTMLUListElement | null>(null);
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent | MouseEvent) => {
+    const handleClickOutside = (event: MouseEvent) => {
       if (
         sidebarRef.current &&
         !sidebarRef.current.contains(event.target as Node)
@@ -29,9 +28,9 @@ const Header: React.FC = () => {
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside as any);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside as any);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
@@ -96,13 +95,7 @@ const Header: React.FC = () => {
                   animate="visible"
                   exit="hidden"
                 >
-                  {/* Dropdown Items */}
-                  {[
-                    {
-                      name: "Ham Staking",
-                      available: true,
-                      link: "/dashboard",
-                    },
+                  {[{ name: "Ham Staking", available: true, link: "/dashboard" },
                     { name: "Ham Nfts", available: true, link: "/mint" },
                     { name: "Ham Token", available: false },
                     { name: "Metaverse", available: false },
@@ -110,7 +103,6 @@ const Header: React.FC = () => {
                   ].map((item, index) => (
                     <li key={index}>
                       <Link
-
                         href={item.link ? item.link : "#"}
                         className={`block overflow-hidden relative px-4 py-2 border ${
                           item.available

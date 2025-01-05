@@ -2,9 +2,11 @@
 import { ThemeProvider } from "next-themes";
 import { createAppKit } from "@reown/appkit/react";
 import { WagmiProvider } from "wagmi";
-import { bsc } from "@reown/appkit/networks";
+// import { bsc } from "@reown/appkit/networks";
+
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { WagmiAdapter } from "@reown/appkit-adapter-wagmi";
+import { bsc } from "viem/chains";
 
 // 0. Setup queryClient
 const queryClient = new QueryClient();
@@ -21,11 +23,11 @@ const metadata = {
 };
 
 // 3. Set the networks
-const networks = [bsc];
+// const networks = [bsc];
 
 // 4. Create Wagmi Adapter
 const wagmiAdapter = new WagmiAdapter({
-  networks,
+  networks: [bsc],
   projectId,
   ssr: true,
 });
@@ -33,7 +35,7 @@ const wagmiAdapter = new WagmiAdapter({
 // 5. Create modal
 createAppKit({
   adapters: [wagmiAdapter],
-  networks,
+  networks: [bsc],
   projectId,
   metadata,
   features: {

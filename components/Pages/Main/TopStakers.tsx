@@ -2,6 +2,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
+import Image from "next/image";
 
 interface StakerCardProps {
   name: string;
@@ -24,16 +25,14 @@ const StakerCard: React.FC<StakerCardProps> = ({
       style={{ height }}
     >
       <div className="w-[70px] h-[70px] bg-white shadow-md rounded-full mb-4 overflow-hidden">
-        <div>
-          <img
-            src={avatar}
-            alt={name}
-            className="object-cover"
-            width={70}
-            height={70}
-            aria-label={`Avatar of ${name}`}
-          />
-        </div>
+        <Image
+          src={avatar}
+          alt={name}
+          className="object-cover"
+          width={70}
+          height={70}
+          aria-label={`Avatar of ${name}`}
+        />
       </div>
       <h3 className="text-xl font-semibold mb-2 text-black">{name}</h3>
       <p className="text-[#202020]/80 text-sm">
@@ -43,9 +42,8 @@ const StakerCard: React.FC<StakerCardProps> = ({
   </div>
 );
 
-interface TopStakersProps {}
-
-const TopStakers: React.FC<TopStakersProps> = () => {
+// Removed the empty interface
+const TopStakers: React.FC = () => {
   const topStakers = [
     {
       name: "KryptoKing 45",
@@ -106,12 +104,11 @@ const TopStakers: React.FC<TopStakersProps> = () => {
           </h2>
           <p className="text-lg text-gray-600">
             Each entry is complemented with a personalized badge or rank,
-            motivating others with the tagline: "Your name could be here. Start
-            staking now!"
+            motivating others with the tagline: &quot;Your name could be here. Start
+            staking now!&quot;
           </p>
         </header>
 
-        {/* Desktop Layout */}
         <div className="">
           <Swiper
             modules={[Autoplay]}
@@ -129,7 +126,6 @@ const TopStakers: React.FC<TopStakersProps> = () => {
             }}
             className="w-full swiper-wrapper"
           >
-            {/* Column 1 */}
             {topStakers.map((staker, index) => (
               <SwiperSlide key={index} className="w-full py-12">
                 <StakerCard {...staker} />

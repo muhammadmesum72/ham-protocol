@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useState } from "react";
 
 
@@ -66,7 +67,7 @@ const Community = () => {
             {/* Carousel */}
             <div className="relative w-full max-w-[95%] sm:max-w-[600px] bg-gradient-to-b from-[#5AC0FF]/10 to-[#5AC0FF]/40 border drop-shadow-card border-[#C6E0FB] rounded-[16px] md:rounded-[32px] p-4 sm:p-6">
               <div className="mb-4">
-                <img
+                <Image
                   className="rounded-[16px]"
                   width={80}
                   height={80}
